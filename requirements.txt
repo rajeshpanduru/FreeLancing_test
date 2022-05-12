@@ -1,0 +1,27 @@
+The scope of this coding challenge is to use the 2 available data sources, in order to process and combine influencers data, and to build the UI displayed below.
+
+Final UI Mockup -> https://imgur.com/a/p32lHuf
+
+1. fetch the list of users from https://reqres.in/api/users
+
+2. for each retrieved user, enrich user based on the provided mock enrichment service (services/users.service.js)
+ Optional: we can pretend the enrichment service has an upper limit of maximum 2 concurrent connections, so the requests should be sent in batches, 2 at a time.
+
+3. prepare the user data:
+ - remove the "@" from the instagram handle where is the case
+ - remove users with followers count less than 10
+ - group users by category
+ - replace forbidden words in order to satisfy the following criteria:
+   - the first and last character should stay in place 
+   - the middle of the string, except first and last character should be replaced by a random string formed by using "!#*"
+   - the replacement should be case sensitive
+
+   Examples: 
+   'onlyfans' => 'o#*!#*#s'
+   'Facebook' => 'F#*!##*k'
+   'facebook' => 'f#*!##*k'
+
+   
+4. Display the users in the UI, by category. User will be displayed as following:
+ - avatar image aligned to the left, rounded.
+ - on the right side, first and last name, description, "instagram handle - number of followers"
